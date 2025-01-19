@@ -23,15 +23,39 @@ AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS += \
     boot \
+    connsys_bt \
+    dpm \
     dtbo \
+    gz \
+    init_boot \
     lk \
-    odm \
+    logo \
+    mcf_ota \
+    mcupm \
+    md1img \
     odm_dlkm \
+    pi_img \
+    preloader_raw \
     product \
+    scp \
+    spmfw \
+    sspm \
     system \
+    system_dlkm \
     system_ext \
+    tee \
+    tkv \
+    tr_carrier \
+    tr_company \
+    tr_mi \
+    tr_preload \
+    tr_product \
+    tr_region \
+    tr_theme \
+    vbmeta \
     vbmeta_system \
     vbmeta_vendor \
+    vcp \
     vendor \
     vendor_boot \
     vendor_dlkm

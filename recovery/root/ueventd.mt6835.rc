@@ -46,9 +46,9 @@
 /dev/gpsdl0               0660   gps        gps
 /dev/gpsdl1               0660   gps        gps
 /dev/stpgps               0660   gps        gps
+/dev/stpgps2              0660   gps        gps
 /dev/gps                  0660   gps        system
 /dev/gps_emi              0660   gps        gps
-/dev/gps2scp              0660   gps        gps
 /dev/gps_pwr              0660   gps        gps
 /dev/fw_log_gps           0660   gps        gps
 # ANT
@@ -58,9 +58,10 @@
 /dev/wmtWifi              0660   wifi     wifi
 /dev/fw_log_wifi          0660   wifi     wifi
 
+# NFBD:modify for dev/fm 0660->0666 KL8H353-4 by pengtao.wu 20240430 start
 # FMRadio
-# NFBD:modify  for dev/fm 0660->0666 by yuguo.zhang 20220406
 /dev/fm                   0666   media     media
+# NFBD:modify for dev/fm 0660->0666 KL8H353-4 by pengtao.wu 20240430 end
 
 # NFC
 /dev/st21nfc              0660   nfc        radio
@@ -92,10 +93,6 @@
 #v4l2 codec
 /dev/vcu    0660 camera system
 
-#vdec-fmt
-/dev/vdec-fmt   0660 media system
-/dev/fmt_sync   0660 system system
-
 #v4l2 camera
 /dev/mtk_hcp     0660 camera system
 
@@ -104,6 +101,10 @@
 
 # MDDP node
 /dev/mddp                 0660   system     system
+
+# cpu hotplug
+/sys/devices/system/cpu/cpu* cpufreq/sugov_ext/down_rate_limit_us 0664 system system
+/sys/devices/system/cpu/cpu* cpufreq/sugov_ext/up_rate_limit_us 0664 system system
 
 # add the read write right of ttyUSB*
 /dev/bus/usb/*     	  0660   root       usb
@@ -158,7 +159,7 @@
 /dev/ttyRB*               0660   radio      radio
 
 # Mali node
-/dev/mali0                0666   system     graphics
+/dev/mali0                 0666   system     graphics
 
 # Change ION driver permission
 /dev/ion                  0666   system     graphics
@@ -166,8 +167,8 @@
 # Change DMA_HEAP deice permission
 #     refs: /system/core/rootdir/uevent.rc
 #           /dev/dma_heap/system      0444   system     system
-/dev/dma_heap/mtk_mm                        0444   system     system
-/dev/dma_heap/mtk_mm-uncached               0444   system     system
+/dev/dma_heap/mtk_mm                                0444   system     system
+/dev/dma_heap/mtk_mm-uncached                       0444   system     system
 /dev/dma_heap/mtk_svp_page-uncached                 0444   system     system
 /dev/dma_heap/mtk_prot_page-uncached                0444   system     system
 /dev/dma_heap/mtk_svp_region                        0444   system     system
@@ -179,10 +180,6 @@
 /dev/dma_heap/mtk_wfd_region                        0444   system     system
 /dev/dma_heap/mtk_wfd_region-aligned                0444   system     system
 /dev/dma_heap/mtk_wfd_page-uncached                 0444   system     system
-/dev/dma_heap/mtk_sapu_data_shm_region              0444   system     system
-/dev/dma_heap/mtk_sapu_data_shm_region-aligned      0444   system     system
-/dev/dma_heap/mtk_sapu_engine_shm_region            0444   system     system
-/dev/dma_heap/mtk_sapu_engine_shm_region-aligned    0444   system     system
 
 #touch
 /dev/touch                0660   root       system
@@ -194,3 +191,9 @@
 
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
+
+#sensor
+/dev/hf_manager           0660    system    system
+
+#dynamic sensor
+/dev/hidraw*   0660 system system
